@@ -1,0 +1,25 @@
+<apex:page id="page" controller="MyController" extensions="CaptureSignatureEXT" action="{!checkSignatureCaptured}">
+
+    <style type="text/css">
+        body { font: normal 100.01%/1.375 "Helvetica Neue",Helvetica,Arial,sans-serif; }
+    </style>
+   
+    <apex:outputPanel id="pnlMain">
+          <apex:form >
+        <apex:pageBlock title="Congratulations {!$User.FirstName}">
+            You belong to Account Name: <apex:inputField value="{!account.name}"/>
+            <apex:commandButton action="{!save}" value="save"/>
+        </apex:pageBlock>
+    </apex:form>
+    
+     
+    
+       
+
+    </apex:outputPanel>
+   
+      
+
+   
+
+</apex:page>

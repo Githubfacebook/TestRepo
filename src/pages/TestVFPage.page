@@ -1,0 +1,40 @@
+<apex:page controller="MyFirstVFTestClass" sidebar="false" showHeader="True">
+  
+
+ 	<!-- apex:outputText value="{!candidate.Name}" /> <br/>
+<apex:outputText value="{!candidate.First_Name__c}" /> -->
+ 
+ 
+ 
+ <apex:form >
+       <apex:pageblock id="candidate" title="Candidate Details(Custom Object)" >
+       <apex:pageBlockButtons >
+ <apex:pageMessages />
+
+        <apex:commandButton value="Save" action="{!save}"/>
+        
+
+      </apex:pageBlockButtons>
+       
+            <apex:pageblockTable value="{!candidate}" var="c">
+                <apex:column headerValue="Name" ><apex:inputField value="{!c.Name}"/></apex:column>
+                <apex:column headerValue="First Name" ><apex:inputField value="{!c.First_Name__c}"/></apex:column>
+                <apex:column headerValue="Last Name"><apex:inputField value="{!c.Last_Name__c}"/></apex:column>
+                <apex:column headerValue="Email"><apex:inputField value="{!c.Email__c}"/></apex:column>	
+             
+                
+                <apex:column headerValue="Type">
+
+          <apex:inputField value="{!c.Type__c}"/>
+
+        </apex:column>
+                
+            </apex:pageblockTable>
+        </apex:pageblock>
+         
+    </apex:form>
+    
+    
+    
+    
+</apex:page>

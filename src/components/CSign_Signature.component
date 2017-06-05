@@ -1,0 +1,83 @@
+<apex:component controller="CSign_SignatureController" allowDml="true">
+    <apex:attribute name="target"
+                    description="The SObject to which the signature should be
+                                 attached."
+                    type="Id" required="required" assignTo="{!targetId}" />
+
+    <apex:attribute name="prefix"
+                    description="String used to distinguish between different
+                                 signatures on the same object."
+                    type="String" default="Signature" assignTo="{!prefix}" />
+
+    <link rel="stylesheet" href="{!$RESOURCE.jquery_signaturepad_css}" />
+
+
+    <apex:outputPanel id="pnlMain">
+        <apex:form styleClass="sigPad"
+                   rendered="{!NOT(signatureCaptured)}"
+                   style="width:602px">
+            <div class="btn" onclick="return capture();">Capture</div>
+            <div class="btn" onclick="return clearSignature();">Clear</div>
+            <br/>
+            <apex:actionFunction name="captureSignatureJS" action="{!captureSignature}" rerender="jsvalues, pnlMain">
+                <apex:param name="one" value="" />
+            </apex:actionFunction>
+
+            <div class="sig sigWrapper" style="height:175px">
+                <div class="typed"></div>
+                <canvas class="pad" width="600" height="175"></canvas>
+                <apex:inputHidden id="output" />
+            </div>
+        </apex:form>
+
+        <apex:outputPanel id="jsvalues">
+            <div>
+                <!-- <apex:outputText value="Value one: {!param}" /><br/> -->
+            </div>
+        </apex:outputPanel>
+    
+        <apex:pageBlock rendered="{!signatureCaptured}" >
+            <apex:pageBlockSection columns="1">
+                <apex:pageBlockSectionItem >
+                    <apex:image url="/servlet/servlet.FileDownload?file={!sigAttachment.Id}" />
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:outputPanel>
+
+
+    <script src="{!$RESOURCE.jquery_min_js}"></script>
+
+    <!--[if lt IE 9]>
+    <script src="{!$RESOURCE.flashcanvas_js}"></script>
+    <![endif]-->
+        
+    <script src="{!$RESOURCE.jquery_signaturepad_min_js}"></script>
+
+    <script>
+        var api;
+        $(document).ready(function() {
+            api = $('.sigPad').signaturePad({drawOnly:true});
+        });
+
+        function capture()
+        {
+            var base64String = api.getSignatureImage();
+            if(api.validateForm() == false)
+            {
+                alert("Invalid Signature");
+            }
+            else
+            {
+                captureSignatureJS(base64String);
+            }
+            
+            return false;
+        }
+        
+        function clearSignature()
+        {
+            api.clearCanvas();
+        }
+    </script>
+</apex:component>

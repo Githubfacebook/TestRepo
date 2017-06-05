@@ -1,0 +1,3 @@
+<apex:page id="page" standardController="Account">
+    <c:CSign_Signature target="{!Id}" />
+</apex:page>

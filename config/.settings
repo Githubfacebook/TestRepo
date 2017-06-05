@@ -1,0 +1,16 @@
+{
+    "projectName": "Sameer Dev Org",
+    "username": "sameer39@gmail.com",
+    "id": "05b652e0-4a0b-11e7-a482-612fde926ac7",
+    "namespace": "",
+    "environment": "developer",
+    "loginUrl": "https://login.salesforce.com/",
+    "workspace": "/Users/sameer.sheikh/workspace",
+    "subscription": [
+        "ApexClass",
+        "ApexComponent",
+        "ApexPage",
+        "ApexTrigger",
+        "StaticResource"
+    ]
+}

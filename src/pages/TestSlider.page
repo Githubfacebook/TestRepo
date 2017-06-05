@@ -1,0 +1,9 @@
+<apex:page controller="html5" doctype="html-5.0"
+    showHeader="false" standardStylesheets="false" id="page">
+    <apex:form id="form"
+        html-oninput="out.value = document.getElementById('page:form:range').value">
+        <apex:input id="range" value="{!anInt}" type="range" 
+            html-min="0" html-max="30" html-step="1" />
+        <output name="out">0</output>
+    </apex:form>
+</apex:page>

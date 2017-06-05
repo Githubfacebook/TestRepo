@@ -1,0 +1,12 @@
+<apex:page showHeader="true" sidebar="true" standardController="Contact" extensions="CalloutsRequest">
+     <apex:form >
+        <apex:pageBlock title="Email" >
+ 
+            <apex:inputText value="{!searchString}" id="myField">Enter Email Address:&nbsp;</apex:inputText>&nbsp;&nbsp;&nbsp;
+            <apex:commandButton action="{!SendEmailBySearch}" value="Send Email"/> 
+            
+            
+         </apex:pageBlock>
+    </apex:form>
+    
+</apex:page>

@@ -1,0 +1,48 @@
+<apex:page showHeader="true" sidebar="true" controller="AttachmentUploadController">
+  <apex:form enctype="multipart/form-data">
+    <apex:pageBlock >
+      <apex:inputText />
+    </apex:pageBlock>
+  
+  <apex:pageblock >
+    <apex:pageBlockSection >
+      <select onchange="showattach();" id="sizeofatta">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+      </select>
+      <div id="1a" style="display:block;">
+
+          <apex:inputFile value="{!attachment.body}" filename="{!attachment.name}" id="file1"/>
+      </div>
+      <div id="2a" style="display:none;">
+
+          <apex:inputFile value="{!attachment.body}" filename="{!attachment.name}" id="file2"/>
+      </div>
+      <div id="3a" style="display:none;">
+
+          <apex:inputFile value="{!attachment.body}" filename="{!attachment.name}" id="file3"/>
+      </div>
+      <apex:commandButton action="{!uploadAttachments}" value="Save"/>
+    </apex:pageBlockSection>
+  </apex:pageblock>
+      </apex:form>
+  <script type="text/javascript">
+        function showattach() {
+            for (var i = 1; i <= 3; i++) {
+                var atdivid = i + 'a';
+                document.getElementById(atdivid).style.display = "none";
+            }           
+            var atcount = document.getElementById("sizeofatta").value;
+            for (var i = 1; i <= atcount; i++) {
+                var atdivid = i + 'a';
+                document.getElementById(atdivid).style.display = "block";
+            }
+        }  
+  </script>
+  <style type="text/css">
+        #1a,#2a,#3a,#4a{
+            dispaly:none;
+        }  
+  </style>
+</apex:page>
